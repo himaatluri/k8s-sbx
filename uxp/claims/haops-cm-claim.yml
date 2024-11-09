@@ -1,7 +1,0 @@
-apiVersion: haops.com/v1alpha1
-kind: xKconfig
-metadata:
-  name: team-blue-customcm
-spec:
-  name: acustomconfigmap
-  namespace: crossplane-system

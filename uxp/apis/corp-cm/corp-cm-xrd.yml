@@ -1,9 +1,9 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xkconfigs.haops.com
+  name: xkconfigs.corp.com
 spec:
-  group: haops.com
+  group: corp.com
   names:
     kind: xKconfig
     plural: xkconfigs
