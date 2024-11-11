@@ -10,6 +10,7 @@ fullup: cluster_up
 cluster_up:
 	echo "Deploying a local kind cluster: $(CLUSTERNAME)"
 	@kind create cluster -n $(CLUSTERNAME) --config kind/cluster.yml
+	@source set.sh
 
 cleanup:
 	@kind delete clusters $(CLUSTERNAME)

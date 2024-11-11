@@ -1,0 +1,7 @@
+apiVersion: corp.com/v1alpha1
+kind: xKconfig
+metadata:
+  name: custom-app-config
+spec:
+  name: corp-team-blue-cm
+  namespace: corp-team-blue
