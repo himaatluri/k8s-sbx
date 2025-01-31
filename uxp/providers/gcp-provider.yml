@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gcp-provider
+  namespace: crossplane-system
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-container
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-container:v1
+  runtimeConfigRef:
+    apiVersion: pkg.crossplane.io/v1beta1
+    kind: DeploymentRuntimeConfig
+    name: provider-gcp

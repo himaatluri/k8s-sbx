@@ -1,0 +1,6 @@
+apiVersion: corp.com/v1alpha1
+kind: xKproject
+metadata:
+  name: custom-app-project
+spec:
+  name: corp-team-blue
