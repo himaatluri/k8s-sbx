@@ -1,0 +1,8 @@
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: gcp-provider
+spec:
+  projectID: "fluid-mind-188102"
+  credentials:
+    source: InjectedIdentity
