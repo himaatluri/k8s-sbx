@@ -1,4 +1,10 @@
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gcp-provider
+  namespace: crossplane-system
+---
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
@@ -9,40 +15,3 @@ spec:
     apiVersion: pkg.crossplane.io/v1beta1
     kind: DeploymentRuntimeConfig
     name: provider-gcp
----
-apiVersion: pkg.crossplane.io/v1beta1
-kind: DeploymentRuntimeConfig
-metadata:
-  name: provider-gcp
-spec:
-  deploymentTemplate:
-    spec:
-      selector:
-        matchLabels:
-          pkg.crossplane.io/provider: provider-gcp-container
-      template:
-        spec:
-          serviceAccountName: provider-gcp
-          containers:
-            - name: package-runtime
-              env:
-                - name: GOOGLE_APPLICATION_CREDENTIALS
-                  value: "/etc/workload-identity/credential-configuration.json"
-              volumeMounts:
-                - name: token
-                  mountPath: "/var/run/service-account"
-                  readOnly: true
-                - name: wif-cm
-                  mountPath: "/etc/workload-identity"
-                  readOnly: true
-          volumes:
-            - name: wif-cm
-              configMap:
-                name: wif-cm
-            - name: token
-              projected:
-                sources:
-                  - serviceAccountToken:
-                      expirationSeconds: 3600
-                      path: token
-                      audience: "https://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/providers/PROVIDER_NAME"

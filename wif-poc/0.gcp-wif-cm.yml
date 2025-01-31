@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gcp-wif
+  namespace: crossplane-system
+data:
+  credential-configuration.json: |-
+    TODO - WIF CREDS
